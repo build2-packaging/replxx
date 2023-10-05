@@ -1,0 +1,50 @@
+# Public headers.
+#
+pub = [dir_path] ../include/
+include $pub
+pub_hdrs = $($pub/ pub_hdrs)
+
+# Headers and Sources
+#
+lib{replxx}: libul{replxx}: \
+  $pub/{$pub_hdrs} {hxx cxx}{**} \
+  cxx{wcwidth.cpp} \
+  hxx{ConvertUTF.h} cxx{ConvertUTF.cpp}
+
+# Build options.
+#
+src_pfx_inc = [dir_path] $src_root/include/
+src_pfx_src = [dir_path] $src_root/src/
+cxx.poptions =+ "-I$src_pfx_src" "-I$src_pfx_inc"
+
+# Automatic DLL Symbol Export
+#
+libs{replxx}: def{replxx}: include = ($cxx.target.system == 'win32-msvc')
+def{replxx}: libul{replxx}
+if ($cxx.target.system == 'mingw32')
+  cxx.loptions += -Wl,--export-all-symbols
+
+# Linking 'pthread'
+#
+if ($cxx.target.system != 'win32-msvc')
+{
+  cxx.libs += -pthread
+  lib{replxx}: cxx.export.libs += -pthread
+}
+
+# Export options.
+#
+lib{replxx}: cxx.export.poptions = "-I$src_pfx_inc"
+
+# For pre-releases use the complete version to make sure they cannot be used
+# in place of another pre-release or the final version. See the version module
+# for details on the version.* variable values.
+#
+if $version.pre_release
+  lib{replxx}: bin.lib.version = "-$version.project_id"
+else
+  lib{replxx}: bin.lib.version = "-$version.major.$version.minor"
+
+# Don't install private headers.
+#
+{h hxx}{*}: install = false

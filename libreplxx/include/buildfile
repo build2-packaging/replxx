@@ -1,0 +1,11 @@
+pub_hdrs = {h hxx}{**}
+
+./: $pub_hdrs
+
+# Install recreating subdirectories.
+#
+{h hxx}{*}:
+{
+  install         = include/
+  install.subdirs = true
+}
