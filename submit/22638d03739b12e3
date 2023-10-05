@@ -1,0 +1,9 @@
+: 1
+name: libreplxx
+version: 0.0.4
+language: c
+language: c++
+project: replxx
+summary: A small, portable GNU readline replacement for Linux, Windows and\
+ MacOS which is capable of handling UTF-8 characters.
+license: BSD-3-Clause
