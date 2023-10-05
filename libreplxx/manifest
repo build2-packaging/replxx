@@ -9,6 +9,7 @@ license: BSD-3-Clause
 
 description-file: README.md
 url: https://github.com/AmokHuginnsson/replxx
+email: amok@codestation.org
 
 package-description-file: PACKAGE-README.md
 package-url: https://github.com/build2-packaging/replxx

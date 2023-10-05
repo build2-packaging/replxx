@@ -1,2 +1,6 @@
-import libs += libreplxx%lib{replxx}
-exe{c-api}: {h c}{**} $libs testscript{**}
+import replxx = libreplxx%lib{replxx}
+
+# In a C executable, the C++ linker needs to be used
+# to make sure all the C++ runtime libraries are linked3
+#
+[rule_hint=cxx] exe{c-api}: {h c}{**} $replxx
