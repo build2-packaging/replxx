@@ -17,6 +17,9 @@ src_pfx_inc = [dir_path] $src_root/include/
 src_pfx_src = [dir_path] $src_root/src/
 cxx.poptions =+ "-I$src_pfx_src" "-I$src_pfx_inc"
 
+{hbmia obja}{*}: cxx.poptions += -DREPLXX_STATIC
+{hbmis objs}{*}: cxx.poptions += -DREPLXX_BUILDING_DLL
+
 # Automatic DLL Symbol Export
 #
 libs{replxx}: def{replxx}: include = ($cxx.target.system == 'win32-msvc')
@@ -35,6 +38,7 @@ if ($cxx.target.system != 'win32-msvc')
 # Export options.
 #
 lib{replxx}: cxx.export.poptions = "-I$src_pfx_inc"
+liba{replxx}: cxx.export.poptions += -DREPLXX_STATIC
 
 # For pre-releases use the complete version to make sure they cannot be used
 # in place of another pre-release or the final version. See the version module
