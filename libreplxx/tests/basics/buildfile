@@ -1,0 +1,2 @@
+import replxx = libreplxx%lib{replxx}
+exe{basics}: {hxx cxx}{**} $replxx

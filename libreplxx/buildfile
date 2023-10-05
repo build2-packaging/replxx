@@ -1,3 +1,4 @@
 ./: {*/ -build/} doc{README.md} manifest
 
 tests/: install = false
+examples/: install = false

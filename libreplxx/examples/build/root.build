@@ -1,0 +1,16 @@
+cxx.std = latest
+
+using c
+using cxx
+
+h{*}: extension = h
+c{*}: extension = c
+
+hxx{*}: extension = hxx
+cxx{*}: extension = cxx
+
+hxx{*}: cxx.importable = true
+
+exe{*}: test = false
+
+test.target = $cxx.target
