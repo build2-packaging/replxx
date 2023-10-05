@@ -44,7 +44,7 @@ There are no configuration options available.
 
 ## Issues and Notes
 
-Currently, there are no issues.
+- Emscripten is not supported.
 
 ## Contributing
 
