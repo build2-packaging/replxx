@@ -1,2 +1,2 @@
 import replxx = libreplxx%lib{replxx}
-exe{basics}: {hxx cxx}{**} $replxx
+exe{basics}: {hxx cxx}{**} $replxx testscript
